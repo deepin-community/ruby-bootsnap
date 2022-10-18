@@ -1,0 +1,4 @@
+no-git-in-gemspec.patch
+skip-cache-path-tests.patch
+0003-test_helper-support-platforms-where-GC-compaction-is.patch
+0004-Gemfile-relax-dependency-on-rubocop.patch

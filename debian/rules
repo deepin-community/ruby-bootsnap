@@ -1,0 +1,14 @@
+#!/usr/bin/make -f
+
+export GEM2DEB_TEST_RUNNER = --check-dependencies
+
+%:
+	dh $@ --buildsystem=ruby --with ruby
+
+override_dh_auto_install:
+	dh_auto_install
+	rm -rf debian/*/usr/bin || true
+
+execute_after_dh_auto_clean:
+	rm -rf tmp
+	rm -f Gemfile.lock

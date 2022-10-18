@@ -1,0 +1,30 @@
+From: Antonio Terceiro <terceiro@debian.org>
+Date: Sun, 1 May 2022 18:50:28 -0300
+Subject: test_helper: support platforms where GC compaction is not supported
+
+Not all platforms support GC compaction. On those, calling
+CG.verify_compaction_references raises a NotImplementedError exception.
+---
+ test/test_helper.rb | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/test/test_helper.rb b/test/test_helper.rb
+index e0ddc34..4cb8756 100644
+--- a/test/test_helper.rb
++++ b/test/test_helper.rb
+@@ -25,9 +25,14 @@ Bootsnap::CompileCache.setup(cache_dir: cache_dir, iseq: true, yaml: false, json
+ if GC.respond_to?(:verify_compaction_references)
+   # This method was added in Ruby 3.0.0. Calling it this way asks the GC to
+   # move objects around, helping to find object movement bugs.
+-  GC.verify_compaction_references(double_heap: true, toward: :empty)
++  begin
++    GC.verify_compaction_references(double_heap: true, toward: :empty)
++  rescue NotImplementedError
++    # some platforms do not support GC compaction
++  end
+ end
+ 
++
+ module TestHandler
+   def self.input_to_storage(_input, path)
+     "neato " + path

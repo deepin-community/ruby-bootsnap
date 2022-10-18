@@ -1,0 +1,111 @@
+ruby-bootsnap (1.11.1-2) UNRELEASED; urgency=medium
+
+  * update
+
+ -- Debian Ruby Team <pkg-ruby-extras-maintainers@lists.alioth.debian.org>  Fri, 22 Jul 2022 13:15:27 +0800
+
+ruby-bootsnap (1.11.1-2) unstable; urgency=medium
+
+  * debian/ruby-tests.rake: skip tests on ppc64el.
+    The tests are trigering some weird behavior on ruby interpreter, and I
+    can't really debug it at the moment. This should be a temporary
+    workaround.
+
+ -- Antonio Terceiro <terceiro@debian.org>  Sat, 25 Jun 2022 22:43:01 -0300
+
+ruby-bootsnap (1.11.1-1) unstable; urgency=medium
+
+  * Team upload
+  * test_helper: support platforms where GC compaction is not supported
+  * New upstream version 1.11.1
+  * debian/.gitattributes: add missing trailing newline
+  * debian/upstream/metadata: refresh from template
+  * debian/ruby-tests.rake: refresh from template
+  * debian/control: refresh from template
+    - Build-Depends: apply same order as the template
+    - Depends: replace hardcoded dependency with ${ruby:Depends}
+  * Refresh patches
+  * Gemfile: relax dependency on rubocop
+  * debian/rules: cleanup tmp and Gemfile.lock
+
+ -- Antonio Terceiro <terceiro@debian.org>  Sat, 07 May 2022 13:07:50 -0300
+
+ruby-bootsnap (1.9.3-1) unstable; urgency=medium
+
+  * Team Upload
+
+  [ Daniel Leidert ]
+  * Fix watch file
+
+  [ Pirate Praveen ]
+  * Really fix filenamemangle in watch file
+  * New upstream version 1.9.3
+  * Bump Standards-Version to 4.6.0 (no changes needed)
+  * Refresh patches and drop patches no longer required
+  * Add ruby-byebug as build dependency
+  * Update minimum version of ruby-msgpack to 1.4~
+  * Update debian/ruby-bootsnap.docs
+
+ -- Pirate Praveen <praveen@debian.org>  Mon, 06 Dec 2021 09:43:33 +0530
+
+ruby-bootsnap (1.4.6-2) unstable; urgency=medium
+
+  * Team upload.
+
+  [ Pirate Praveen ]
+  * Bump minimum version of gem2deb to 1.0
+
+  [ Cédric Boutillier ]
+  * Update team name
+  * Add .gitattributes to keep unwanted files out of the source package
+
+  [ Debian Janitor ]
+  * Set upstream metadata fields: Bug-Database, Bug-Submit, Repository,
+    Repository-Browse.
+  * Update standards version to 4.5.1, no changes needed.
+  * Remove constraints unnecessary since buster
+  * Bump debhelper from old 12 to 13.
+
+ -- Antonio Terceiro <terceiro@debian.org>  Thu, 25 Nov 2021 08:01:53 -0300
+
+ruby-bootsnap (1.4.6-1) unstable; urgency=medium
+
+  * Team upload
+  * New upstream version 1.4.6
+  * Refresh patches and drop ruby 2.7 support patch (applied upstream)
+  * Disable more cache path related tests
+
+ -- Pirate Praveen <praveen@debian.org>  Fri, 20 Mar 2020 18:48:20 +0530
+
+ruby-bootsnap (1.4.4-1) experimental; urgency=medium
+
+  * Team upload
+  [ Utkarsh Gupta ]
+  * Add salsa-ci.yml
+
+  [ Abhijith PA ]
+  * Fix ruby 2.7 test failure
+  * d/control
+    + Use debhelper-compat instead
+    + Bump Standards-Version to 4.5.0
+    + Remove ruby interpreter from depends field
+    + Add Rules-Requires-Root: no
+
+  [ Jongmin Kim ]
+  * New upstream version 1.4.4
+    + Add test suite and its dependencies
+  * d/watch: Move to github.com/Shopify/bootsnap for importing tests
+  * d/control: Bump Standards-Version to 4.3.0 (no changes needed)
+  * d/patches:
+    + Patch for relaxing dependencies version
+    + Patch for removing git from gemspec
+    + Patch for skipping the cache path related tests
+    + d/patches: Revert not-needed version relaxing for mocha, msgpack
+
+ -- Abhijith PA <abhijith@debian.org>  Sun, 23 Feb 2020 19:39:19 +0530
+
+ruby-bootsnap (1.3.0-1) unstable; urgency=medium
+
+  * Initial release (Closes: #897985)
+
+ -- Sruthi Chandran <srud@disroot.org>  Sun, 06 May 2018 23:25:46 +0530

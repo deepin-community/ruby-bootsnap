@@ -1,0 +1,25 @@
+From: Jongmin Kim <jmkim@pukyong.ac.kr>
+Date: Sun, 1 May 2022 18:49:31 -0300
+Subject: No git in gemspec
+
+Forwarded: not-needed
+Last-Update: 2019-06-03
+
+Replace calls to 'git' in gemspec by explicit lists of files.
+---
+ bootsnap.gemspec | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/bootsnap.gemspec b/bootsnap.gemspec
+index 30f7e0b..59edbb3 100644
+--- a/bootsnap.gemspec
++++ b/bootsnap.gemspec
+@@ -23,7 +23,7 @@ Gem::Specification.new do |spec|
+     "allowed_push_host" => "https://rubygems.org",
+   }
+ 
+-  spec.files = `git ls-files -z ext lib`.split("\x0") + %w(CHANGELOG.md LICENSE.txt README.md)
++  spec.files = Dir.glob('lib/**') + Dir.glob('ext/**')
+   spec.require_paths = %w(lib)
+ 
+   spec.bindir        = "exe"
